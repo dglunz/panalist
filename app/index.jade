@@ -26,18 +26,22 @@ html
     .container.row
       .col.m6.s12.offset-m3 
         #header
-        #main
+        #todo
+        #done
 
   script(type="text/template" id="header-view").
     <h1>Panalist</h1>
     <div class="input-field">
-      <input type="text" id="new-todo">
+      <input type="text" id="new-todo" />
       <label for="new-todo">Todo</label>
     </div>
 
   script(type="text/template" id="todo-view").
     <%- title %>
-    <a href="#" class="secondary-content remove"><i class="material-icons">delete</i></a>
+    <div class="secondary-content">
+      <input class="check" id="<%- uniqId %>" type="checkbox" <%- checked %> />
+      <label for="<%- uniqId %>"></label>
+    </div>
 
   script(type="text/template" id="todos-view").
     <ul class="collection" id="todo-list"></ul>

@@ -1,2 +1,63 @@
+$primary: #292C42
+$secondary: #FDF6F2
+$primary-pop: #A20C2F
+$secondary-pop: #E8C589
+$gradient: linear-gradient(to right,#FF265C,#C420D4);
+
+body
+  background-color: $secondary
+
 h1
+  color: $primary
   font-weight: 800
+
+span.title
+  vertical-align: top
+  color: $primary
+
+div.strip
+  height: 12px
+  background-image: $gradient
+
+i.remove
+  color: $primary-pop
+  cursor: pointer
+  vertical-align: top
+
+i.edit
+  color: $primary
+  cursor: pointer
+  vertical-align: top
+
+ul.collection
+  border-color: $primary
+
+.collection li.collection-item
+  padding-bottom: 0px;
+  border-color: $primary
+  background-color: white
+
+.input-field label 
+ left: 0
+ color: $primary
+
+.input-field input[type=text]:focus + label 
+ color: $primary-pop;
+
+.input-field input[type=text]:focus 
+ border-bottom: 1px solid $primary-pop;
+ box-shadow: 0 1px 0 0 $primary-pop;
+
+.input-field input[type=text].valid 
+ border-bottom: 1px solid $primary-pop;
+ box-shadow: 0 1px 0 0 $primary-pop;
+
+.input-field .prefix.active 
+ color: $primary-pop;
+
+.input-field input[type=text]
+  border-bottom: 2px solid $primary
+
+[type="checkbox"]:checked + label:before
+  border-right-color: $secondary-pop
+  border-bottom-color: $secondary-pop

@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var livereload = require('gulp-livereload');
 var plumber = require('gulp-plumber');
-var browserify = require('gulp-browserify');
+var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
@@ -64,14 +64,15 @@ gulp.task('vendor-fonts', function() {
 });
 
 gulp.task('scripts', function() {
-  stream = gulp.src(paths.src + 'js/app.coffee', { read: false })
+  stream = gulp.src([
+    paths.src + 'js/models/*.coffee',
+    paths.src + 'js/collections/*.coffee',
+    paths.src + 'js/views/*.coffee',
+    paths.src + 'js/app.coffee'
+  ])
   .pipe(plumber())
-  .pipe(browserify({
-    debug: environment == 'development',
-    transform: ['coffeeify', 'jadeify'],
-    extensions: ['.coffee', '.jade']
-  }))
-  .pipe(concat('index.js'))
+  .pipe(concat('index.coffee'))
+  .pipe(coffee({bare: true}).on('error', function(err){}))
 
   if (environment == 'production') {
     stream.pipe(uglify())

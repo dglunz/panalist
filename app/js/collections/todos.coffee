@@ -1,7 +1,9 @@
 class Todos extends Backbone.Collection
-  initialize: ->
-    @.add title: "Figure"
-    @.add title: "This"
-    @.add title: "Shit"
-    @.add title: "Out"
+  localStorage: new Backbone.LocalStorage 'todos-backbone'
   model: Todo
+  byDone: (bool) ->
+    filtered = @.filter (todo) ->
+      todo.get('done') == bool
+    new Todos(filtered)
+
+

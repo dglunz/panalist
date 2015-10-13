@@ -1,0 +1,57 @@
+body {
+  background-color: #FDF6F2; }
+
+h1 {
+  color: #292C42;
+  font-weight: 800; }
+
+span.title {
+  vertical-align: top;
+  color: #292C42; }
+
+div.strip {
+  height: 12px;
+  background-image: linear-gradient(to right, #FF265C, #C420D4); }
+
+i.remove {
+  color: #A20C2F;
+  cursor: pointer;
+  vertical-align: top; }
+
+i.edit {
+  color: #292C42;
+  cursor: pointer;
+  vertical-align: top; }
+
+ul.collection {
+  border-color: #292C42; }
+
+.collection li.collection-item {
+  padding-bottom: 0px;
+  border-color: #292C42;
+  background-color: white; }
+
+.input-field label {
+  left: 0;
+  color: #292C42; }
+
+.input-field input[type=text]:focus + label {
+  color: #A20C2F; }
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #A20C2F;
+  box-shadow: 0 1px 0 0 #A20C2F; }
+
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #A20C2F;
+  box-shadow: 0 1px 0 0 #A20C2F; }
+
+.input-field .prefix.active {
+  color: #A20C2F; }
+
+.input-field input[type=text] {
+  border-bottom: 2px solid #292C42; }
+
+[type="checkbox"]:checked + label:before {
+  border-right-color: #E8C589;
+  border-bottom-color: #E8C589; }

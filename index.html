@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Panalist</title>
+    <link rel="stylesheet" href="./css/vendor.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="./js/vendor.js"></script>
+    <script src="./js/index.js"></script>
+  </head>
+  <body>
+    <div class="strip"></div>
+    <div class="container row">
+      <div class="col m6 s12 offset-m3"> 
+        <h1>Panalist</h1>
+        <div id="app"></div>
+      </div>
+    </div>
+  </body>
+  <script type="text/template" id="todo-view">
+    <input class="check" id="<%- uniqId %>" type="checkbox" <%- checked %> />
+    <label for="<%- uniqId %>"></label>    
+    <span class="title"><%- title %></span>
+    <div class="secondary-content">
+      <i class="material-icons edit">edit</i>
+      <i class="material-icons remove">delete</i>
+    </div>
+    
+  </script>
+  <script type="text/template" id="todos-view">
+    <ul class="collection" id="todo-list"></ul>
+    
+  </script>
+  <script type="text/template" id="todos-layout">
+    <div class="input-field">
+      <input type="text" id="new-todo" />
+      <label for="new-todo">Todo</label>
+    </div>
+    <div id="todo"></div>
+    <div id="done"></div>
+  </script>
+</html>

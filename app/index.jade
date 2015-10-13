@@ -9,12 +9,35 @@ html
 
     link(rel='stylesheet', href='./css/vendor.css', type='text/css')
     link(rel='stylesheet', href='./css/main.css', type='text/css')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 
-    script(src="./js/vendor.js")
+
+    script(src="./js/jquery.js")
+    script(src="./js/underscore.js")
+    script(src="./js/backbone.js")
+    script(src="./js/backbone.localStorage.js")
+    script(src="./js/backbone.wreqr.js")
+    script(src="./js/backbone.babysitter.js")
+    script(src="./js/backbone.marionette.js")
+    script(src="./js/materialize.js")
     script(src="./js/index.js")
   
   body
-    .container
-      .col.m6.offset-m3
-        h1 Panalist
-        #app
+    .container.row
+      .col.m6.s12.offset-m3 
+        #header
+        #main
+
+  script(type="text/template" id="header-view").
+    <h1>Panalist</h1>
+    <div class="input-field">
+      <input type="text" id="new-todo">
+      <label for="new-todo">Todo</label>
+    </div>
+
+  script(type="text/template" id="todo-view").
+    <%- title %>
+    <a href="#" class="secondary-content remove"><i class="material-icons">delete</i></a>
+
+  script(type="text/template" id="todos-view").
+    <ul class="collection" id="todo-list"></ul>

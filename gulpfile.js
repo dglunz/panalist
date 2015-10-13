@@ -10,6 +10,7 @@ var minify = require('gulp-minify-css');
 var mainBowerFiles = require('main-bower-files');
 var gulpFilter = require('gulp-filter');
 var flatten = require('gulp-flatten');
+var connect = require('gulp-connect');
 
 var environment = 'development';
 var paths = {
@@ -36,8 +37,6 @@ gulp.task('vendor-styles', function() {
   .pipe(cssFilter)
   .pipe(plumber())
   .pipe(concat("vendor.css"))
-  .pipe(gulp.dest(paths.dest + 'css/'))
-  .pipe(minify())
   .pipe(gulp.dest(paths.dest + 'css/'))
 });
 
@@ -91,8 +90,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('styles', function () {
-  stream = gulp.src(paths.src + 'styles/**/*.sass')
-  .pipe(plumber())
+  stream = gulp.src(paths.src + 'styles/main.sass')
   .pipe(sass().on('error', sass.logError))
 
   if (environment == 'production') {
@@ -103,23 +101,29 @@ gulp.task('styles', function () {
 });
 
 gulp.task('watch', function () {
-  var server = livereload();
+  var reload = function(evt){
+    connect.reload()
+  }
 
-  gulp.watch(paths.src + 'js/**', ['scripts']);
-  gulp.watch(paths.src + 'styles/**/*.sass', ['styles']);
-  gulp.watch(paths.src + 'index.jade', ['html']);
+  gulp.watch(paths.src + 'js/**', ['scripts']).on('change', reload);
+  gulp.watch(paths.src + 'styles/**/*.sass', ['styles']).on('change', reload);
+  gulp.watch(paths.src + 'index.jade', ['html']).on('change', reload);
 
   gulp.watch([
     paths.dest + 'js/*.js',
     paths.dest + 'css/*.css',
     paths.dest + '**/*.html'
-  ], function(evt) {
-    server.changed(evt.path);
+  ]);
+});
+
+gulp.task('serve', function () {
+  connect.server({
+    livereload: true,
   });
 });
 
 gulp.task('vendor', ['vendor-styles', 'vendor-scripts', 'vendor-fonts']);
 gulp.task('compile', ['html', 'styles', 'scripts']);
 
-gulp.task('default', ['assets', 'vendor', 'compile']);
+gulp.task('default', ['assets', 'vendor', 'compile', 'serve', 'watch']);
 gulp.task('production', ['set-production', 'default']);

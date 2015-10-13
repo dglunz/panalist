@@ -1,0 +1,20 @@
+{
+  "name": "panalist",
+  "version": "1.0.0",
+  "authors": [
+    "Daniel Glunz <dannyglunz@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "Materialize": "materialize#~0.97.1",
+    "backbone.marionette": "marionette#~2.4.3"
+  }
+}
